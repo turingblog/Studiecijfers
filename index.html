@@ -4,9 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      function selectCity(){
+        var city = document.getElementById("city").value;
+        switch(city){
+          case "UVA":
+            changeFrameSource('21pk/56981');
+            break;
+          case "VU":
+            changeFrameSource('21PL/56945');
+            break;
+          case "RUG":
+            changeFrameSource('21PC/56981');
+            break;
+          case "RU":
+            changeFrameSource('21PM/56945');
+            break;
+          case "MU":
+            changeFrameSource('21PJ/50300');
+            break;
+          default: //default = UU
+            changeFrameSource('21PD/56981');
+            break;
+        }
+      }
+      function changeFrameSource(loc){
+        document.getElementById('cijfers').src = 'https://www.studiekeuze123.nl/studie-in-cijfers/'+loc;
+      }
+
+    </script>
   </head>
   <body>
-    <script src="script.js"></script>
+    <div class="form-group">
+      <label class="label" for="city">Kies een universiteit:</label>
+      <select class="form-control" name="city" id="city" onchange="selectCity()">
+        <option value="RU">Radboud Universiteit Nijmegen</option>
+        <option value="UU">Universiteit Utrecht</option>
+        <option value="MU">Maastricht University</option>
+        <option value="RUG" selected>Rijksuniversiteit Groningen</option>
+        <option value="UVA">Universiteit van Amsterdam</option>
+        <option value="VU">Vrije Universiteit Amsterdam</option>
+      </select>
+    </div>
+    <iframe id="cijfers" class="cijfers" width="100%" style="overflow: auto;" src="https://www.studiekeuze123.nl/studie-in-cijfers/21PC/56981" title="W3Schools Free Online Web Tutorials">
+    </iframe>
   </body>
 </html>
